@@ -58,16 +58,7 @@ public class GPSService extends Service implements LocationListener {
                     .isProviderEnabled(LocationManager.GPS_PROVIDER);
             // If GPS enabled, get latitude/longitude using GPS Services
             if (isGPSEnabled) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    // return TODO;
-                }
+                // use backward permission compatibility instead of RequestPermissions()
                 mLocationManager.requestLocationUpdates(
                         LocationManager.GPS_PROVIDER, TIME, DISTANCE, this);
                 if (mLocationManager != null) {
